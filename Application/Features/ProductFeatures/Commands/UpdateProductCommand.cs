@@ -14,6 +14,7 @@ namespace Application.Features.ProductFeatures.Commands
         public string Description { get; set; }
         public decimal BuyingPrice { get; set; }
         public decimal Rate { get; set; }
+        public string Size { get; set; }
         public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, int>
         {
             private readonly IApplicationDbContext _context;
@@ -35,6 +36,7 @@ namespace Application.Features.ProductFeatures.Commands
                     product.BuyingPrice = command.BuyingPrice;
                     product.Rate = command.Rate;
                     product.Description = command.Description;
+                    product.Size = command.Size;
                     await _context.SaveChanges();
                     return product.Id;
                 }
